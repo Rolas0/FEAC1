@@ -7,11 +7,11 @@ function BusinessList({ category }) {
         ? businesses.filter((business) => business.category === category)
         : businesses;
     return (
-        <section className="business_container">
+        <div className="business_container">
             {filteredBusiness.map((business) => (
                 <ServiceCard key={business._id} business={business} />
             ))}
-        </section>
+        </div>
     );
 }
 

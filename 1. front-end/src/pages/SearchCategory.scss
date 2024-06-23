@@ -1,0 +1,12 @@
+.search_category_container {
+    display: flex;
+    gap: 32px;
+
+    .category_vertical_container {
+        width: 30%;
+    }
+
+    .business_list_container {
+        width: 70%;
+    }
+}

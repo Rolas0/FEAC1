@@ -28,7 +28,7 @@ export const businesses = [
         ],
     },
     {
-        _id: '662e9ac5c68c09aa94544549',
+        _id: '662e9ac5c68c09aa94544541',
         name: 'Moki veži',
         about: 'Description Two',
         address: 'Žemaičių al. 27, Klaipėda',
@@ -45,7 +45,7 @@ export const businesses = [
         _id: '662ea59ed296417abaedfdfc',
         name: 'Elektrikas į namus',
         address: 'Maisto g. 17, Vilnius',
-        category: 'electric',
+        category: 'electricity',
         contactPerson: 'Rokas Andreikėnas',
         email: 'food@gmail.com',
         images: [
