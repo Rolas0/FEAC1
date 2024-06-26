@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import AboutUs from './pages/AboutUs';
 import ErrorPage from './pages/ErrorPage';
 import SearchCategory from './pages/SearchCategory';
+import UserLoginProvider from './context/UserLoginContext';
 
 function App() {
     const router = createBrowserRouter([
@@ -46,9 +47,11 @@ function App() {
     ]);
     return (
         <>
-            <div className="App">
-                <RouterProvider router={router} />;
-            </div>
+            <UserLoginProvider>
+                <div className="App">
+                    <RouterProvider router={router} />;
+                </div>
+            </UserLoginProvider>
         </>
     );
 }

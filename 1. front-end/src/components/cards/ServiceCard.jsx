@@ -13,7 +13,7 @@ function ServiceCard({ business }) {
                 <h3 className="busi_name">{business.name}</h3>
                 <p className="busi_contact_person">{business.contactPerson}</p>
                 <p className="busi_adress">{business.address}</p>
-                <button>Book now</button>
+                <button className="busi_button">Book now</button>
             </div>
         </div>
     );

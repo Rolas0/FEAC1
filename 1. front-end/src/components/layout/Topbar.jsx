@@ -1,9 +1,14 @@
 import Button from '../common/Button';
 import './Topbar.scss';
 import { Link, useNavigate } from 'react-router-dom';
-
+import { CreateUserLoginContext } from '../../context/UserLoginContext.jsx';
+import { useContext } from 'react';
+import UserAvatar from '../common/UserAvatar.jsx';
 function Topbar() {
     const navigate = useNavigate();
+
+    const { user } = useContext(CreateUserLoginContext);
+
     return (
         <header className="topbar">
             <div className="navigation_div">
@@ -27,12 +32,16 @@ function Topbar() {
                 </nav>
             </div>
             <div className="register_login">
-                <Button
-                    onClick={() => {
-                        navigate('/login');
-                    }}
-                    text={'Login / Sign Up'}
-                />
+                {user ? (
+                    <UserAvatar>{user.email[0]} </UserAvatar>
+                ) : (
+                    <Button
+                        onClick={() => {
+                            navigate('/login');
+                        }}
+                        text={'Login / Sign Up'}
+                    />
+                )}
             </div>
         </header>
     );
