@@ -1,4 +1,4 @@
-import './App.scss';
+import styles from './App.module.scss';
 
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ import ErrorPage from './pages/ErrorPage';
 import SearchCategory from './pages/SearchCategory';
 import UserLoginProvider from './context/UserLoginContext';
 
-function App() {
+const App = () => {
     const router = createBrowserRouter([
         {
             element: <RootLayout />,
@@ -48,12 +48,12 @@ function App() {
     return (
         <>
             <UserLoginProvider>
-                <div className="App">
+                <div className={styles.App}>
                     <RouterProvider router={router} />;
                 </div>
             </UserLoginProvider>
         </>
     );
-}
+};
 
 export default App;

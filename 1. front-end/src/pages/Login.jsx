@@ -1,7 +1,7 @@
 import Input from '../components/common/Input';
 import styles from './Login.module.scss';
 
-function Login() {
+const Login = () => {
     return (
         <div className={styles.container}>
             <form className={styles.form}>
@@ -23,5 +23,6 @@ function Login() {
             </form>
         </div>
     );
-}
+};
+
 export default Login;

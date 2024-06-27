@@ -5,17 +5,18 @@ export const CreateUserLoginContext = createContext({
     user: null,
 });
 
-function UserLoginProvider({ children }) {
+const UserLoginProvider = ({ children }) => {
     const [user, setUser] = useLocalStorage('user', null);
 
-    function login(userData) {
+    const login = (userData) => {
         setUser(userData);
-    }
+    };
 
     return (
         <CreateUserLoginContext.Provider value={{ user, login }}>
             {children}
         </CreateUserLoginContext.Provider>
     );
-}
+};
+
 export default UserLoginProvider;
