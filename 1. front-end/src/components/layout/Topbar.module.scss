@@ -8,6 +8,8 @@
 
     .navigation_div {
         display: flex;
+        justify-content: center;
+        align-items: center;
         gap: 15px;
 
         .logoipsum {
@@ -16,13 +18,21 @@
 
         .navbar {
             ul {
+                .nav_link {
+                    text-decoration: none;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
                 display: flex;
                 gap: 18px;
                 list-style: none;
+
                 font-size: 18px;
 
                 li {
                     cursor: pointer;
+                    font-weight: bold;
                 }
             }
         }

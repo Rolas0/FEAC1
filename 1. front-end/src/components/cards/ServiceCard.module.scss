@@ -19,11 +19,11 @@
         border-top-right-radius: 1rem;
     }
 
-    .busi_info_container {
+    .business_info_container {
         padding: 16px;
         height: 50%;
 
-        .busi_span {
+        .business_span {
             display: inline-block;
             padding: 8px 16px;
             border-radius: 30px;
@@ -33,18 +33,30 @@
             font-size: 0.9rem;
             text-transform: capitalize;
         }
-        .busi_name {
+        .business_name {
             margin-top: 16px;
             font-size: 19.2px;
         }
-        .busi_contact_person {
+        .business_contact_person {
             margin-top: 16px;
             color: #8056eb;
             font-size: 19px;
         }
-        .busi_adress {
+        .business_adress {
             margin: 16px 0px;
             color: #a8a8a8;
+        }
+        .business_button {
+            padding: 0.75rem 1.25rem;
+            background-color: #8056eb;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            &:hover {
+                background-color: dodgerblue;
+            }
         }
     }
 }

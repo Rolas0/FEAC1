@@ -6,7 +6,7 @@ import shifting from '../../assets/delivery.png';
 import plumbing from '../../assets/plumber.png';
 import electricity from '../../assets/electricity.png';
 
-function VerticalCategory() {
+const VerticalCategory = () => {
     return (
         <div className="vertical_list">
             <CategoryCard
@@ -14,44 +14,45 @@ function VerticalCategory() {
                 text="Cleaning"
                 alt="cleaning"
                 img={cleaning}
-                cName={'vertical_category_card'}
+                type="vertical"
             />
             <CategoryCard
                 category="repair"
                 text="Repair"
                 alt="repair"
                 img={repair}
-                cName={'vertical_category_card'}
+                type="vertical"
             />
             <CategoryCard
                 category="painting"
                 text="Painting"
                 alt="painting"
                 img={painting}
-                cName={'vertical_category_card'}
+                type="vertical"
             />
             <CategoryCard
                 category="shifting"
                 text="Shifting"
                 alt="shifting"
                 img={shifting}
-                cName={'vertical_category_card'}
+                type="vertical"
             />
             <CategoryCard
                 category="plumbing"
                 text="Plumbing"
                 alt="plumbing"
                 img={plumbing}
-                cName={'vertical_category_card'}
+                type="vertical"
             />
             <CategoryCard
                 category="electricity"
                 text="Electricity"
                 alt="electricity"
                 img={electricity}
-                cName={'vertical_category_card'}
+                type="vertical"
             />
         </div>
     );
-}
+};
+
 export default VerticalCategory;

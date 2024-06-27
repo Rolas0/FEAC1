@@ -1,15 +1,17 @@
 import BusinessList from '../components/home/BusinessList.jsx';
 import Category from '../components/home/Category.jsx';
 import Hero from '../components/home/Hero.jsx';
+import styles from './Home.module.scss';
 
-function Home() {
+const Home = () => {
     return (
         <>
             <Hero />
             <Category />
-            <h3>Popular businesses</h3>
+            <h2 className={styles.h2}>Popular businesses</h2>
             <BusinessList />
         </>
     );
-}
+};
+
 export default Home;
