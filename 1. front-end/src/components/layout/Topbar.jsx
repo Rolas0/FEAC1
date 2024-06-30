@@ -8,7 +8,7 @@ const Topbar = () => {
     const navigate = useNavigate();
 
     const { user } = useContext(CreateUserLoginContext);
-
+    console.log(user.email[0]);
     return (
         <header className={styles.topbar}>
             <div className={styles.navigation_div}>
@@ -37,7 +37,7 @@ const Topbar = () => {
             </div>
             <div className={styles.register_login}>
                 {user ? (
-                    <UserAvatar>{user.email[0]} </UserAvatar>
+                    <UserAvatar avatar={user.email[0]} />
                 ) : (
                     <Button
                         onClick={() => {
