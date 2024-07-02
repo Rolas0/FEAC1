@@ -29,4 +29,7 @@ router.get('/businesses/:businessId/bookings/date/:date', getBookingByDate);
 router.post('/bookings', postBooking);
 router.delete('/bookings/:id', deleteBooking);
 
+router.get('/categories', getCategory);
+router.post('/categories', postCategory);
+
 module.exports = router;
