@@ -13,8 +13,8 @@ const port = process.env.PORT || 8080;
 const connectionURI = process.env.MONGODB_URI;
 
 mongoose
-    .connect(connectionURI)
-    .then(() => console.log('Connected to MongoDB'))
-    .catch((error) => console.error('Cannot connect to MongoDB', error));
+  .connect(connectionURI)
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((error) => console.error('Cannot connect to MongoDB', error));
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
