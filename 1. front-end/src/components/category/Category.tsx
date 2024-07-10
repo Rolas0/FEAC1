@@ -1,5 +1,5 @@
 import styles from './Category.module.scss';
-import CategoryCard from '../cards/CategoryCard';
+import CategoryCard from './CategoryCard';
 import cleaning from '../../assets/cleaning.png';
 import repair from '../../assets/repair.png';
 import painting from '../../assets/painting.png';

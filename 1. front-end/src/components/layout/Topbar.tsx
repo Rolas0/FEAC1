@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { CreateUserLoginContext } from '../../context/UserLoginContext';
 import { useContext } from 'react';
 import UserAvatar from '../common/UserAvatar';
+import { ROUTES } from '../../router/routes';
 
 const Topbar = () => {
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ const Topbar = () => {
     return (
         <header className={styles.topbar}>
             <div className={styles.navigation_div}>
-                <Link to="/">
+                <Link to={ROUTES.HOME}>
                     <img
                         className={styles.logoipsum}
                         src="./logo.svg"
@@ -22,15 +23,15 @@ const Topbar = () => {
                 </Link>
                 <nav className={styles.navbar}>
                     <ul>
-                        <Link className={styles.nav_link} to="/">
+                        <Link className={styles.nav_link} to={ROUTES.HOME}>
                             <li>Home</li>
                         </Link>
 
-                        <Link className={styles.nav_link} to="/services">
+                        <Link className={styles.nav_link} to={ROUTES.SERVICES}>
                             <li>Services</li>
                         </Link>
 
-                        <Link className={styles.nav_link} to="aboutus">
+                        <Link className={styles.nav_link} to={ROUTES.ABOUT_US}>
                             <li>About Us</li>
                         </Link>
                     </ul>
@@ -38,11 +39,11 @@ const Topbar = () => {
             </div>
             <div className={styles.register_login}>
                 {user ? (
-                    <UserAvatar children={user.email[0]} />
+                    <UserAvatar>{user.email[0]}</UserAvatar>
                 ) : (
                     <Button
                         onClick={() => {
-                            navigate('/login');
+                            navigate(ROUTES.LOGIN);
                         }}
                         text="Login / Sign Up"
                     />

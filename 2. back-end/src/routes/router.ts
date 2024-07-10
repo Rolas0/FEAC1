@@ -31,7 +31,7 @@ router.get('/', authMiddleware, getAllUsers);
 router.put('/:id', updateUser);
 router.delete('/:id', deleteUser);
 
-router.post('/register', postRegister);
-router.post('/login', postLogin);
+router.post('/auth/register', postRegister);
+router.post('/auth/login', postLogin);
 
 export default router;

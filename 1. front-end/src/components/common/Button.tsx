@@ -1,8 +1,8 @@
 import styles from './Button.module.scss';
 
 interface buttonProps {
-    text: String;
-    onClick: any;
+    text: string;
+    onClick: () => void;
 }
 
 const Button = ({ onClick, text }: buttonProps) => {

@@ -1,14 +1,8 @@
+import { ROUTES } from '../../router/routes';
 import styles from './CategoryCard.module.scss';
+import { CategoryCardProps } from './types';
 
 import { useNavigate, generatePath, useParams } from 'react-router-dom';
-
-interface CategoryCardProps {
-    img: string;
-    alt: string;
-    text: string;
-    category: string;
-    type?: 'horizontal' | 'vertical';
-}
 
 const CategoryCard = ({
     img,
@@ -20,7 +14,7 @@ const CategoryCard = ({
     const navigate = useNavigate();
     const params = useParams();
     const handleClick = () => {
-        const categoryPath = generatePath('/search/:category', { category });
+        const categoryPath = generatePath(ROUTES.SEARCH_CATEGORY, { category });
         navigate(categoryPath);
     };
 
