@@ -1,15 +1,8 @@
 import styles from './ServiceCard.module.scss';
+import { Business } from './types';
 
 interface ServiceCardProps {
     business: Business;
-}
-interface Business {
-    _id: string;
-    name: string;
-    images: { url: string }[];
-    category: string;
-    contactPerson: string;
-    address: string | number;
 }
 
 const ServiceCard = ({ business }: ServiceCardProps) => {
@@ -17,7 +10,7 @@ const ServiceCard = ({ business }: ServiceCardProps) => {
         <div className={styles.service_card}>
             <img
                 className={styles.business_img}
-                src={business.images[0].url}
+                src={business.imageUrls[0]}
                 alt={business.name}
             />
             <div className={styles.business_info_container}>
