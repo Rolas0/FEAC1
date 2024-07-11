@@ -6,6 +6,7 @@ interface ServiceCardProps {
 }
 
 const ServiceCard = ({ business }: ServiceCardProps) => {
+    console.log(business.imageUrls[0]);
     return (
         <div className={styles.service_card}>
             <img

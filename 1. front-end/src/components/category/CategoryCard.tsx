@@ -1,38 +1,43 @@
-import { ROUTES } from '../../router/routes';
-import styles from './CategoryCard.module.scss';
-import { CategoryCardProps } from './types';
-
 import { useNavigate, generatePath, useParams } from 'react-router-dom';
+import classNames from 'classnames';
+import { ROUTES } from '../../router/routes';
+import UrlIcon from '../common/UrlIcon';
+import { Category } from './types';
+import styles from './CategoryCard.module.scss';
 
-const CategoryCard = ({
-    img,
-    alt,
-    text,
-    category,
-    type = 'horizontal',
-}: CategoryCardProps) => {
-    const navigate = useNavigate();
+interface CategoryCardProps {
+    category: Category;
+    className?: string;
+}
+
+const CategoryCard = ({ category, className }: CategoryCardProps) => {
     const params = useParams();
-    const handleClick = () => {
-        const categoryPath = generatePath(ROUTES.SEARCH_CATEGORY, { category });
-        navigate(categoryPath);
-    };
+    const { name } = category;
+    const navigate = useNavigate();
 
+    const categoryPath = generatePath(ROUTES.SEARCH_CATEGORY, {
+        category: name,
+    });
     const activeCategory = params.category;
-    const isActive = activeCategory === category;
-
-    const cardStyle =
-        type === 'vertical'
-            ? styles.vertical_category_card
-            : styles.category_card;
 
     return (
         <div
-            onClick={handleClick}
-            className={`${cardStyle} ${isActive ? styles.active : ''}`}
+            className={classNames(
+                styles.card,
+                activeCategory === name && styles.active,
+                className
+            )}
+            onClick={() => navigate(categoryPath)}
         >
-            <img src={img} alt={alt} />
-            <p>{text}</p>
+            <UrlIcon
+                url={category.url}
+                style={{
+                    width: 48,
+                    height: 48,
+                    backgroundColor: category.color,
+                }}
+            />
+            <p>{name}</p>
         </div>
     );
 };

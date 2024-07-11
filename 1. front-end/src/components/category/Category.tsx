@@ -1,52 +1,20 @@
-import styles from './Category.module.scss';
 import CategoryCard from './CategoryCard';
-import cleaning from '../../assets/cleaning.png';
-import repair from '../../assets/repair.png';
-import painting from '../../assets/painting.png';
-import shifting from '../../assets/delivery.png';
-import plumbing from '../../assets/plumber.png';
-import electricity from '../../assets/electricity.png';
+import { useCategories } from './hooks';
+import styles from './Category.module.scss';
 
 const Category = () => {
+    const { data: categories } = useCategories();
+
     return (
-        <section className={styles.category_section}>
-            <CategoryCard
-                category="cleaning"
-                text="Cleaning"
-                alt="cleaning"
-                img={cleaning}
-            />
-            <CategoryCard
-                category="repair"
-                text="Repair"
-                alt="repair"
-                img={repair}
-            />
-            <CategoryCard
-                category="painting"
-                text="Painting"
-                alt="painting"
-                img={painting}
-            />
-            <CategoryCard
-                category="shifting"
-                text="Shifting"
-                alt="shifting"
-                img={shifting}
-            />
-            <CategoryCard
-                category="plumbing"
-                text="Plumbing"
-                alt="plumbing"
-                img={plumbing}
-            />
-            <CategoryCard
-                category="electricity"
-                text="Electricity"
-                alt="electricity"
-                img={electricity}
-            />
-        </section>
+        <div className={styles.container}>
+            {categories?.map((category) => (
+                <CategoryCard
+                    key={category.name}
+                    category={category}
+                    className={styles.card}
+                />
+            ))}
+        </div>
     );
 };
 
