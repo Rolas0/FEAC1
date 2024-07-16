@@ -12,10 +12,8 @@ const categorySchema = new mongoose.Schema<ICategory>({
     required: true,
   },
   color: {
-    hex: {
-      type: String,
-      default: '#FFFFFF',
-    },
+    type: String,
+    default: '#FFFFFF',
   },
 
   url: {

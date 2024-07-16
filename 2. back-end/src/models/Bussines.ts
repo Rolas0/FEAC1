@@ -40,10 +40,8 @@ const businessSchema = new mongoose.Schema<IBusiness>({
   },
   imageUrls: [
     {
-      url: {
-        type: String,
-        required: true,
-      },
+      type: String,
+      required: true,
     },
   ],
 });
