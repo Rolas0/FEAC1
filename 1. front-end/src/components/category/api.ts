@@ -1,7 +1,7 @@
 import axiosInstance from '../../config/axios';
-import { CategoryCardProps } from './types';
+import { Category } from './types';
 
-export const fetchCategories = async (): Promise<CategoryCardProps[]> => {
+export const fetchCategories = async (): Promise<Category[]> => {
     const response = await axiosInstance.get('/categories');
     return await response.data;
 };

@@ -1,10 +1,10 @@
 import ServiceCard from './ServiceCard';
 import styles from './BusinessList.module.scss';
 import { useBusinesses } from './hooks';
-import { CategoryCardProps } from '../category/types';
+import { Category } from '../category/types';
 
 interface BusinessListProps {
-    category?: CategoryCardProps['text'];
+    category?: Category['name'];
 }
 
 const BusinessList = ({ category }: BusinessListProps) => {

@@ -10,14 +10,14 @@ import {
   updateBussines,
 } from '../controllers/bussinesesController';
 import { getCategory, postCategory } from '../controllers/categoryController';
-import { deleteUser, updateUser, getAllUsers } from '../controllers/userController';
+import { deleteUser, updateUser, getAllUsers, getUserBookings } from '../controllers/userController';
 import { postRegister, postLogin } from '../controllers/authController';
 
 router.get('/businesses', getBusinesses);
 router.get('/businesses/category/:category', getBusinessesByCategory);
 router.get('/businesses/:id', getBusinessesByID);
-router.post('/businesses', postBussines);
-router.put('/businesses/:id', updateBussines);
+router.post('/businesess', postBussines);
+router.put('/businesess/:id', updateBussines);
 
 router.get('/bookings/user/:email', getBookingsByEmail);
 router.get('/businesses/:businessId/bookings/date/:date', getBookingByDate);
@@ -30,6 +30,7 @@ router.post('/categories', postCategory);
 router.get('/', authMiddleware, getAllUsers);
 router.put('/:id', updateUser);
 router.delete('/:id', deleteUser);
+router.get('/user/bookings/:email', getUserBookings);
 
 router.post('/auth/register', postRegister);
 router.post('/auth/login', postLogin);
