@@ -2,6 +2,7 @@ export interface User {
     _id: string;
     name: string;
     email: string;
+    bookings?: string[];
 }
 
 export interface LoginRequest {
