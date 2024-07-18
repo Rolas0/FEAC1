@@ -1,0 +1,38 @@
+@import '../../variables/global.scss';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .similar_card {
+        display: flex;
+        flex-direction: row;
+
+        .image {
+            height: 140px;
+            width: 110px;
+            object-fit: cover;
+            border-radius: 1rem;
+            cursor: pointer;
+        }
+
+        .card_info {
+            padding: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: start;
+            .category {
+                text-transform: capitalize;
+                font-weight: bold;
+            }
+            .name {
+                color: $primary-color;
+            }
+            .address {
+                color: rgb(175, 169, 169);
+            }
+        }
+    }
+}

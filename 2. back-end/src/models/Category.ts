@@ -15,13 +15,11 @@ const categorySchema = new mongoose.Schema<ICategory>({
     type: String,
     default: '#FFFFFF',
   },
-
   url: {
     type: String,
-    default: 'http://example.com/default-icon.png',
+    default: 'https://img.icons8.com/?size=100&id=6644&format=png&color=000000',
   },
 });
-
 const Category = mongoose.model<ICategory>('Category', categorySchema);
 
 export default Category;

@@ -5,6 +5,7 @@ export const ROUTES = {
   LOGIN: "/login",
   REGISTER: "/register",
   SEARCH_CATEGORY: "/search/:category",
+  SINGLE_BUSINESS: '/businesses/:id',
   MY_ACCOUNT: "/account",
   MY_BOOKING: "/booking",
   LOGOUT: "/logout",

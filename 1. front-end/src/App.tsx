@@ -13,6 +13,8 @@ import ErrorPage from './pages/ErrorPage';
 import SearchCategory from './pages/SearchCategory';
 import { UserLoginProvider } from './context/UserLoginContext';
 import { SnackbarProvider } from 'notistack';
+import SingleBusiness from './components/business/SingleBusiness';
+import Business from './pages/Business';
 
 const router = createBrowserRouter([
     {
@@ -33,8 +35,12 @@ const router = createBrowserRouter([
             },
 
             {
-                path: '/search/:category',
+                path: 'search/:category',
                 element: <SearchCategory />,
+            },
+            {
+                path: '/businesses/:id',
+                element: <Business />,
             },
         ],
     },

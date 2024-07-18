@@ -1,12 +1,21 @@
+import { generatePath, Link } from 'react-router-dom';
 import styles from './ServiceCard.module.scss';
 import { Business } from './types';
+import { useParams, useNavigate } from 'react-router-dom';
+import { ROUTES } from '../../router/routes';
 
 interface ServiceCardProps {
     business: Business;
 }
 
 const ServiceCard = ({ business }: ServiceCardProps) => {
-    console.log(business.imageUrls[0]);
+    const { _id } = business;
+    const navigate = useNavigate();
+
+    const singleBusinessPath = generatePath(ROUTES.SINGLE_BUSINESS, {
+        id: _id,
+    });
+
     return (
         <div className={styles.service_card}>
             <img
@@ -23,7 +32,13 @@ const ServiceCard = ({ business }: ServiceCardProps) => {
                     {business.contactPerson}
                 </p>
                 <p className={styles.business_adress}>{business.address}</p>
-                <button className={styles.business_button}>Book now</button>
+
+                <button
+                    onClick={() => navigate(singleBusinessPath)}
+                    className={styles.business_button}
+                >
+                    Book now
+                </button>
             </div>
         </div>
     );
