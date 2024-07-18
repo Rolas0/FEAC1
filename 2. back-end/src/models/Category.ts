@@ -13,7 +13,7 @@ const categorySchema = new mongoose.Schema<ICategory>({
   },
   color: {
     type: String,
-    default: '#000000',
+    default: '#FFFFFF',
   },
   url: {
     type: String,
