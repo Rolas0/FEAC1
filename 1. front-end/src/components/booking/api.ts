@@ -1,10 +1,13 @@
-import axiosInstance from '../../config/axios';
+import axiosInstance from '@/config/axios';
 import { Bookings } from './types';
 
 export const fetchUserBookings = async (
-    userEmail: string
-): Promise<Bookings> => {
-    const response = await axiosInstance.get(`/bookings/user/${userEmail}`);
+    userId: string,
+    status: 'confirmed' | 'pending' | 'cancelled'
+): Promise<Bookings[]> => {
+    const response = await axiosInstance.get(`/user/${userId}/bookings`, {
+        params: { status },
+    });
     return response.data;
 };
 

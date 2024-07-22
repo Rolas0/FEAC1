@@ -1,7 +1,9 @@
-import mongoose, { Types } from 'mongoose';
+import mongoose, { Document, Types } from 'mongoose';
 import { isEmail } from 'validator';
 
-interface IBooking {
+export interface IBooking extends Document {
+  _id: Types.ObjectId;
+  user: Types.ObjectId;
   businessId: Types.ObjectId;
   date: Date;
   time: string;
@@ -11,8 +13,14 @@ interface IBooking {
 }
 
 const bookingSchema = new mongoose.Schema<IBooking>({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
+  },
   businessId: {
     type: mongoose.Schema.Types.ObjectId,
+    ref: 'Business',
     required: true,
   },
   date: {
@@ -23,11 +31,13 @@ const bookingSchema = new mongoose.Schema<IBooking>({
     type: String,
     required: true,
   },
+
   userEmail: {
     type: String,
     required: true,
     validate: [isEmail, 'Please enter a valid email'],
   },
+
   userName: {
     type: String,
     required: true,

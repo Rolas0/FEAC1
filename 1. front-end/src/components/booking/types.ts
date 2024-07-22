@@ -1,5 +1,8 @@
+import { Business } from '../business/types';
+
 export interface Bookings {
-    businessId: string;
+    _id: string;
+    businessId: Business;
     date: Date | null;
     time: string;
     userEmail: string;

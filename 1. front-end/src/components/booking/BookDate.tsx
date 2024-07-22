@@ -6,7 +6,7 @@ import { add, format } from 'date-fns';
 import classNames from 'classnames';
 import { usePostBooking } from './hooks';
 import { Bookings } from './types';
-import { CreateUserLoginContext } from '../../context/UserLoginContext';
+import { CreateUserLoginContext } from '@/context/UserLoginContext';
 import { useParams } from 'react-router-dom';
 
 interface DateType {
@@ -114,4 +114,5 @@ const BookDate = () => {
         </div>
     );
 };
+
 export default BookDate;

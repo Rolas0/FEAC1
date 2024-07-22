@@ -1,7 +1,7 @@
 import styles from './SearchCategory.module.scss';
 import { useParams } from 'react-router-dom';
-import BusinessList from '../components/business/BusinessList';
-import VerticalCategory from '../components/category/VerticalCategory';
+import BusinessList from '@/components/business/BusinessList';
+import VerticalCategory from '@/components/category/VerticalCategory';
 
 const SearchCategory = () => {
     const { category } = useParams();

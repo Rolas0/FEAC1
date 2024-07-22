@@ -1,13 +1,12 @@
 import { useContext, useState } from 'react';
-import BookDate from '../components/booking/BookDate';
-import Sidebar from '../components/business/Sidebar';
+import BookDate from '@/components/booking/BookDate';
+import Sidebar from '@/components/business/Sidebar';
 import SingleBusiness from '../components/business/SingleBusiness';
 import './Business.module.scss';
 import { CreateUserLoginContext } from '../context/UserLoginContext';
-import { useParams } from 'react-router-dom';
 
 const Business = () => {
-    const { user, isLoggedIn } = useContext(CreateUserLoginContext);
+    const { isLoggedIn } = useContext(CreateUserLoginContext);
     const [isOpen, setIsOpen] = useState(false);
 
     const openSidebar = () => setIsOpen(true);
@@ -32,4 +31,5 @@ const Business = () => {
         </>
     );
 };
+
 export default Business;

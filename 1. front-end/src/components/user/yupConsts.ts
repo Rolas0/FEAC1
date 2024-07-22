@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import { errorMessage } from '../../consts/errorMessage';
+import { errorMessage } from '@/consts/errorMessage';
 import { LoginRequest, RegisterRequest } from './types';
 
 export const loginValidationSchema: Yup.Schema<LoginRequest> =

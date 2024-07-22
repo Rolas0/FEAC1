@@ -11,7 +11,6 @@ interface IUser extends Document {
   bookings: Types.ObjectId[];
   isCorrectPassword(password: string): Promise<boolean>;
 }
-
 const userSchema = new Schema<IUser>(
   {
     name: {
@@ -21,7 +20,7 @@ const userSchema = new Schema<IUser>(
       lowercase: true,
     },
     age: { type: Number },
-    bookings: [{ type: Schema.Types.ObjectId, ref: 'Booking' }],
+    bookings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Booking' }],
     email: {
       type: String,
       required: [true, 'Please enter the email address'],
@@ -35,7 +34,6 @@ const userSchema = new Schema<IUser>(
       minlength: [5, 'Minimum password length is 5 characters'],
     },
   },
-
   {
     timestamps: true,
     versionKey: false,

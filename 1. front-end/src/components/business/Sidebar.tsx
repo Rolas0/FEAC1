@@ -1,4 +1,4 @@
-import { PropsWithChildren, useState } from 'react';
+import { PropsWithChildren } from 'react';
 import styles from './Sidebar.module.scss';
 import Modal from 'react-modal';
 
@@ -7,6 +7,7 @@ interface SidebarProps extends PropsWithChildren {
     open: boolean;
     onClose: () => void;
 }
+
 const Sidebar = ({ isOpen, onClose, children }: SidebarProps) => {
     return (
         <Modal
@@ -25,4 +26,5 @@ const Sidebar = ({ isOpen, onClose, children }: SidebarProps) => {
         </Modal>
     );
 };
+
 export default Sidebar;

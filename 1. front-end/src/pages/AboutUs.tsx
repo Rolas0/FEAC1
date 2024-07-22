@@ -1,7 +1,12 @@
+import About from '@/components/aboutus/About';
 import styles from './AboutUs.module.scss';
 
 const AboutUs = () => {
-    return <div>AboutUs</div>;
+    return (
+        <div>
+            <About />
+        </div>
+    );
 };
 
 export default AboutUs;

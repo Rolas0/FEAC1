@@ -15,20 +15,6 @@ export const getBookingsByEmail = async (req: Request, res: Response) => {
   }
 };
 
-// export const postBooking = async (req: Request, res: Response) => {
-//   const post = req.body;
-//   const newBooking = new Booking(post);
-
-//   try {
-//     await newBooking.save();
-//     return res.status(201).json(newBooking);
-//   } catch (err) {
-//     res.status(400).json({
-//       message: 'Error creating booking',
-//       error: (err as Error)?.message ?? err,
-//     });
-//   }
-// };
 export const postBooking = async (req: Request, res: Response) => {
   const { businessId, date, time, userEmail, userName, status } = req.body;
 
@@ -52,6 +38,7 @@ export const postBooking = async (req: Request, res: Response) => {
       businessId,
       date,
       time,
+      user: user._id,
       userEmail,
       userName,
       status,

@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 import { isEmail } from 'validator';
 
-interface IBusiness {
+interface IBusiness extends Document {
   name: string;
   about: string;
   address: string;

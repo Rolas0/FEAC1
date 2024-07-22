@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 
-interface ICategory {
+interface ICategory extends Document {
   name: string;
   color: string;
   url: string;

@@ -1,10 +1,10 @@
 import Button from '../common/Button';
 import styles from './Topbar.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
-import { CreateUserLoginContext } from '../../context/UserLoginContext';
+import { CreateUserLoginContext } from '@/context/UserLoginContext';
 import { useContext } from 'react';
 import UserAvatar from '../common/UserAvatar';
-import { ROUTES } from '../../router/routes';
+import { ROUTES } from '@/router/routes';
 
 const Topbar = () => {
     const navigate = useNavigate();

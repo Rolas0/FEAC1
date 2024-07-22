@@ -1,6 +1,6 @@
 import { useBusinesses } from './hooks';
 import styles from './SimilarBusiness.module.scss';
-import { ROUTES } from '../../router/routes';
+import { ROUTES } from '@/router/routes';
 import { generatePath, useNavigate, useParams } from 'react-router-dom';
 
 const SimilarBusiness = () => {
@@ -50,4 +50,5 @@ const SimilarBusiness = () => {
         </div>
     );
 };
+
 export default SimilarBusiness;
