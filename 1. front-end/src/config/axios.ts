@@ -1,4 +1,4 @@
-import { PROD } from '../consts/enviroment';
+import { PROD } from '../consts/environment';
 import axios, { AxiosError, AxiosRequestConfig } from 'axios';
 
 export type ErrorResponse = AxiosError<{ message: string }>;

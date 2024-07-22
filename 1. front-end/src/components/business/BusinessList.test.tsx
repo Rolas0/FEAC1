@@ -1,100 +1,77 @@
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+// import '@testing-library/jest-dom/extend-expect';
 import BusinessList from './BusinessList';
 import { useBusinesses } from './hooks';
 import { Business } from './types';
 
+// Mock the useBusinesses hook
 jest.mock('./hooks');
 
 const mockBusinesses: Business[] = [
     {
         _id: '1',
-        name: 'Test Business 1',
-        category: 'Category 1',
+        imageUrls: ['https://example.com/image1.jpg'],
+        name: 'Business 1',
+        category: 'Restaurant',
         contactPerson: 'John Doe',
-        address: '123 Test St, Test City',
-        imageUrls: ['https://via.placeholder.com/150'],
-        about: 'About Test Business 1',
-        email: 'test1@example.com',
+        address: '123 Street A',
+        email: 'business@gmail.com',
+        about: 'good restaurant',
     },
     {
         _id: '2',
-        name: 'Test Business 2',
-        category: 'Category 2',
-        contactPerson: 'Jane Doe',
-        address: '456 Test Ave, Test City',
-        imageUrls: ['https://via.placeholder.com/150'],
-        about: 'About Test Business 2',
-        email: 'test2@example.com',
+        imageUrls: ['https://example.com/image2.jpg'],
+        name: 'Business 2',
+        category: 'Retail',
+        contactPerson: 'Jane Smith',
+        address: '456 Street B',
+        email: 'business1@gmail.com',
+        about: 'good retail business',
     },
 ];
 
-describe('BusinessList', () => {
+describe('BusinessList Component', () => {
+    beforeEach(() => {
+        jest.clearAllMocks();
+    });
+
     test('renders loading state', () => {
         (useBusinesses as jest.Mock).mockReturnValue({
-            data: null,
+            data: [],
             error: null,
             isLoading: true,
         });
 
-        render(
-            <MemoryRouter>
-                <BusinessList />
-            </MemoryRouter>
-        );
+        render(<BusinessList search="" />);
 
         expect(screen.getByText('Loading...')).toBeInTheDocument();
     });
 
     test('renders error state', () => {
         (useBusinesses as jest.Mock).mockReturnValue({
-            data: null,
-            error: true,
+            data: [],
+            error: new Error('Failed to fetch'),
             isLoading: false,
         });
 
-        render(
-            <MemoryRouter>
-                <BusinessList />
-            </MemoryRouter>
-        );
+        render(<BusinessList search="" />);
 
         expect(
             screen.getByText('Error loading businesses.')
         ).toBeInTheDocument();
     });
 
-    test('renders list of businesses', () => {
+    test('renders a list of businesses', () => {
         (useBusinesses as jest.Mock).mockReturnValue({
             data: mockBusinesses,
             error: null,
             isLoading: false,
         });
 
-        render(
-            <MemoryRouter>
-                <BusinessList />
-            </MemoryRouter>
-        );
+        render(<BusinessList search="" />);
 
-        expect(screen.getByText('Test Business 1')).toBeInTheDocument();
-        expect(screen.getByText('Test Business 2')).toBeInTheDocument();
-    });
-
-    test('renders "No businesses found." when there are no businesses', () => {
-        (useBusinesses as jest.Mock).mockReturnValue({
-            data: [],
-            error: null,
-            isLoading: false,
-        });
-
-        render(
-            <MemoryRouter>
-                <BusinessList />
-            </MemoryRouter>
-        );
-
-        expect(screen.getByText('No businesses found.')).toBeInTheDocument();
+        expect(screen.getByText('Business 1')).toBeInTheDocument();
+        expect(screen.getByText('Business 2')).toBeInTheDocument();
     });
 
     test('filters businesses by category', () => {
@@ -104,13 +81,33 @@ describe('BusinessList', () => {
             isLoading: false,
         });
 
-        render(
-            <MemoryRouter>
-                <BusinessList category="Category 1" />
-            </MemoryRouter>
-        );
+        render(<BusinessList search="" category="Restaurant" />);
 
-        expect(screen.getByText('Test Business 1')).toBeInTheDocument();
-        expect(screen.queryByText('Test Business 2')).toBeNull();
+        expect(screen.getByText('Business 1')).toBeInTheDocument();
+        expect(screen.queryByText('Business 2')).not.toBeInTheDocument();
+    });
+
+    test('renders no businesses found when no results match', () => {
+        (useBusinesses as jest.Mock).mockReturnValue({
+            data: mockBusinesses,
+            error: null,
+            isLoading: false,
+        });
+
+        render(<BusinessList search="" category="Nonexistent Category" />);
+
+        expect(screen.getByText('No businesses found.')).toBeInTheDocument();
+    });
+
+    test('renders no businesses found when data is empty', () => {
+        (useBusinesses as jest.Mock).mockReturnValue({
+            data: [],
+            error: null,
+            isLoading: false,
+        });
+
+        render(<BusinessList search="" />);
+
+        expect(screen.getByText('No businesses found.')).toBeInTheDocument();
     });
 });
