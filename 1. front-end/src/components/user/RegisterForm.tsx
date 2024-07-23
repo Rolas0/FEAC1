@@ -1,12 +1,12 @@
 import styles from './Form.module.scss';
-import { ROUTES } from '../../router/routes';
+import { ROUTES } from '@/router/routes';
 import { Form, Formik } from 'formik';
 import { useSnackbar } from 'notistack';
 import { FormikField } from '../common/FormInput';
 import { registerInitialValues, registerValidationSchema } from './yupConsts';
 import { RegisterRequest } from './types';
 import { useRegisterUser } from './hooks';
-import { ErrorResponse } from '../../config/axios';
+import { ErrorResponse } from '@/config/axios';
 import { useNavigate, Link } from 'react-router-dom';
 
 export const RegisterForm = () => {
@@ -56,7 +56,9 @@ export const RegisterForm = () => {
                             placeholder="password"
                         />
                     </div>
-                    <button type="submit">Register</button>
+                    <button className={styles.button} type="submit">
+                        Register
+                    </button>
                     <div className={styles.link}>
                         <Link to={ROUTES.LOGIN} className={styles.singUp}>
                             Already have an account? Log in

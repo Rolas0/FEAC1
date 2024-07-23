@@ -1,7 +1,12 @@
 import styles from './Hero.module.scss';
-import searchIcon from '../../assets/search-icon.png';
+import searchIcon from '@/assets/search-icon.png';
+import { CiSearch } from 'react-icons/ci';
 
-const Hero = () => {
+interface HeroProps {
+    onSearch: (search: string) => void;
+}
+
+const Hero = ({ onSearch }: HeroProps) => {
     return (
         <div className={styles.home_section}>
             <div className={styles.title}>
@@ -13,12 +18,12 @@ const Hero = () => {
 
             <div className={styles.search_div}>
                 <div className={styles.search_bar}>
-                    <input type="text" placeholder="Serch" />
-                    <img
-                        className={styles.img_search}
-                        src={searchIcon}
-                        alt="search-icon"
+                    <input
+                        type="text"
+                        onChange={(event) => onSearch(event.target.value)}
+                        placeholder="Search"
                     />
+                    <CiSearch className={styles.img_search} />
                 </div>
             </div>
         </div>

@@ -30,7 +30,7 @@ router.post('/categories', postCategory);
 router.get('/', authMiddleware, getAllUsers);
 router.put('/:id', updateUser);
 router.delete('/:id', deleteUser);
-router.get('/user/bookings/:email', getUserBookings);
+router.get('/user/:userId/bookings', getUserBookings);
 
 router.post('/auth/register', postRegister);
 router.post('/auth/login', postLogin);

@@ -1,8 +1,14 @@
+import { ReactNode } from 'react';
+import { Booking } from '../booking/types';
+
 export interface User {
+    time: ReactNode;
+    date: string | number | Date;
+    businessId: any;
     _id: string;
     name: string;
     email: string;
-    bookings?: string[];
+    bookings?: Booking[];
 }
 
 export interface LoginRequest {

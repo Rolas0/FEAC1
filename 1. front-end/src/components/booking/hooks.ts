@@ -1,13 +1,17 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { createBooking, fetchUserBookings } from './api';
-import { Bookings } from './types';
+import { CreateUserLoginContext } from '@/context/UserLoginContext';
+import { useContext } from 'react';
+import { BookingStatus } from './types';
 
 export const BOOKING_KEY = 'BOOKING';
 
-export const useUserBookings = (userEmail: string) => {
-    return useQuery<Bookings>({
-        queryKey: [BOOKING_KEY, userEmail],
-        queryFn: () => fetchUserBookings(userEmail),
+export const useUserBookings = (status: BookingStatus) => {
+    const { user } = useContext(CreateUserLoginContext);
+    const id = user!._id;
+    return useQuery({
+        queryKey: [BOOKING_KEY, id, status],
+        queryFn: () => fetchUserBookings(id, status),
     });
 };
 

@@ -1,5 +1,6 @@
+import { IBooking } from '../models/Booking';
 import User from '../models/User';
-import Booking from '../models/Booking';
+
 import { Request, Response } from 'express';
 
 export const getAllUsers = async (req: Request, res: Response) => {
@@ -11,54 +12,32 @@ export const getAllUsers = async (req: Request, res: Response) => {
   }
 };
 
-// export const getUserBookings = async (req: Request, res: Response) => {
-//   const { userEmail } = req.params;
-
-//   try {
-//     const user = await User.findOne({ userEmail }).populate('bookings').exec();
-//     console.log(user);
-//     if (!user) {
-//       return res.status(404).send('User not found');
-//     }
-
-//     const bookings = user.bookings;
-
-//     if (!bookings || bookings.length === 0) {
-//       return res.status(404).send('Bookings not found');
-//     }
-
-//     res.status(200).send(bookings);
-//   } catch (error) {
-//     res.status(500).json({
-//       message: 'Error fetching businesses by category',
-//       error: error,
-//     });
-//   }
-// };
 export const getUserBookings = async (req: Request, res: Response) => {
-  const { userEmail } = req.params;
+  const { userId } = req.params;
+  const { status } = req.query;
 
   try {
-    const user = await User.findOne({ userEmail: userEmail }).populate('bookings').exec();
+    const user = await User.findById(userId).populate<{ bookings: IBooking[] }>({
+      path: 'bookings',
+      match: { status: status },
+      populate: { path: 'businessId' },
+    });
 
     if (!user) {
+      console.log('User not found');
       return res.status(404).send('User not found');
     }
 
     const bookings = user.bookings;
 
     if (!bookings || bookings.length === 0) {
+      console.log('Bookings not found');
       return res.status(404).send('Bookings not found');
     }
 
     res.status(200).json(bookings);
-    console.log('User found:', user);
-    console.log('User bookings:', bookings);
-  } catch (error) {
-    res.status(500).json({
-      message: 'Error fetching businesses by category',
-      error: error,
-    });
+  } catch (err) {
+    return res.status(400).json(err);
   }
 };
 

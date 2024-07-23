@@ -39,3 +39,16 @@
     color: red;
     margin: 1rem 0;
 }
+
+.button {
+    padding: 0.75rem 1.25rem;
+    background-color: #8056eb;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    &:hover {
+        opacity: 0.9;
+    }
+}

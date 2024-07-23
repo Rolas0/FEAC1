@@ -1,4 +1,4 @@
-import axiosInstance from '../../config/axios';
+import axiosInstance from '@/config/axios';
 import { Category } from './types';
 
 export const fetchCategories = async (): Promise<Category[]> => {

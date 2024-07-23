@@ -1,8 +1,8 @@
-import { generatePath, Link } from 'react-router-dom';
+import { generatePath } from 'react-router-dom';
 import styles from './ServiceCard.module.scss';
 import { Business } from './types';
-import { useParams, useNavigate } from 'react-router-dom';
-import { ROUTES } from '../../router/routes';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '@/router/routes';
 
 interface ServiceCardProps {
     business: Business;
@@ -43,4 +43,5 @@ const ServiceCard = ({ business }: ServiceCardProps) => {
         </div>
     );
 };
+
 export default ServiceCard;

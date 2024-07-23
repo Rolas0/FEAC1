@@ -4,11 +4,12 @@ import { useBusinesses } from './hooks';
 import { Category } from '../category/types';
 
 interface BusinessListProps {
+    search: string;
     category?: Category['name'];
 }
 
-const BusinessList = ({ category }: BusinessListProps) => {
-    const { data, error, isLoading } = useBusinesses();
+const BusinessList = ({ category, search }: BusinessListProps) => {
+    const { data, error, isLoading } = useBusinesses(search);
     const businesses = data ?? [];
 
     if (isLoading) {

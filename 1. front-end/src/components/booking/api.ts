@@ -1,24 +1,27 @@
-import axiosInstance from '../../config/axios';
-import { Bookings } from './types';
+import axiosInstance from '@/config/axios';
+import { Booking, BookingStatus, BookingTwo, NewBooking } from './types';
 
 export const fetchUserBookings = async (
-    userEmail: string
-): Promise<Bookings> => {
-    const response = await axiosInstance.get(`/bookings/user/${userEmail}`);
+    userId: string,
+    status: BookingStatus
+): Promise<BookingTwo[]> => {
+    const response = await axiosInstance.get(`/user/${userId}/bookings`, {
+        params: { status },
+    });
     return response.data;
 };
 
 export const fetchBookingByDate = async (
     businessId: string,
     date: string
-): Promise<Bookings[]> => {
+): Promise<Booking[]> => {
     const response = await axiosInstance.get(
         `/businesses/${businessId}/bookings/date/${date}`
     );
     return response.data;
 };
 
-export const createBooking = async (booking: Bookings): Promise<Bookings> => {
+export const createBooking = async (booking: NewBooking): Promise<Booking> => {
     const response = await axiosInstance.post('/bookings', booking);
     return response.data;
 };

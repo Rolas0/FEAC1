@@ -12,4 +12,5 @@ const Button = ({ onClick, text }: buttonProps) => {
         </button>
     );
 };
+
 export default Button;

@@ -13,8 +13,9 @@ import ErrorPage from './pages/ErrorPage';
 import SearchCategory from './pages/SearchCategory';
 import { UserLoginProvider } from './context/UserLoginContext';
 import { SnackbarProvider } from 'notistack';
-import SingleBusiness from './components/business/SingleBusiness';
 import Business from './pages/Business';
+import Bookings from './pages/Bookings';
+import { ROUTES } from './router/routes';
 
 const router = createBrowserRouter([
     {
@@ -22,25 +23,29 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
         children: [
             {
-                path: '/',
+                path: ROUTES.HOME,
                 element: <Home />,
             },
             {
-                path: 'services',
+                path: ROUTES.SERVICES,
                 element: <Services />,
             },
             {
-                path: 'aboutus',
+                path: ROUTES.ABOUT_US,
                 element: <AboutUs />,
             },
 
             {
-                path: 'search/:category',
+                path: ROUTES.SEARCH_CATEGORY,
                 element: <SearchCategory />,
             },
             {
-                path: '/businesses/:id',
+                path: ROUTES.SINGLE_BUSINESS,
                 element: <Business />,
+            },
+            {
+                path: ROUTES.MY_BOOKING,
+                element: <Bookings />,
             },
         ],
     },
@@ -49,11 +54,11 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
         children: [
             {
-                path: 'login',
+                path: ROUTES.LOGIN,
                 element: <Login />,
             },
             {
-                path: 'register',
+                path: ROUTES.REGISTER,
                 element: <Register />,
             },
         ],

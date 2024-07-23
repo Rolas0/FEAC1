@@ -2,12 +2,21 @@ import Business from '../models/Bussines';
 import { Request, Response } from 'express';
 
 export const getBusinesses = async (req: Request, res: Response) => {
+  const search = (req.query.search as string) || '';
   try {
-    const newBusinesses = await Business.find();
+    const query: any = {};
 
-    return res.status(200).send(newBusinesses);
-  } catch (err) {
-    res.status(500).json({ message: 'Error fetching businesses', error: err });
+    if (search) {
+      query.$or = [{ name: { $regex: search, $options: 'i' } }, { category: { $regex: search, $options: 'i' } }];
+    }
+
+    const businesses = await Business.find(query);
+    return res.status(200).send(businesses);
+  } catch (error) {
+    res.status(500).json({
+      message: 'Error fetching businesses',
+      error: error,
+    });
   }
 };
 

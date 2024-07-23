@@ -5,8 +5,8 @@ import ReactCalendar from 'react-calendar';
 import { add, format } from 'date-fns';
 import classNames from 'classnames';
 import { usePostBooking } from './hooks';
-import { Bookings } from './types';
-import { CreateUserLoginContext } from '../../context/UserLoginContext';
+import { NewBooking } from './types';
+import { CreateUserLoginContext } from '@/context/UserLoginContext';
 import { useParams } from 'react-router-dom';
 
 interface DateType {
@@ -40,7 +40,9 @@ const BookDate = () => {
     };
 
     const handleBookNow = async () => {
-        const booking: Bookings = {
+        if (!id) return;
+
+        const booking: NewBooking = {
             businessId: id,
             date: date.justDate,
             time: format(date.dateTime!, 'kk:mm'),
@@ -114,4 +116,5 @@ const BookDate = () => {
         </div>
     );
 };
+
 export default BookDate;
