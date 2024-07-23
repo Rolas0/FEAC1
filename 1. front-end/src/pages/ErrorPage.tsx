@@ -1,7 +1,7 @@
 import styles from './ErrorPage.module.scss';
 
 const ErrorPage = () => {
-    return <div>ErrorPage</div>;
+    return <div className={styles.container}>ErrorPage</div>;
 };
 
 export default ErrorPage;
