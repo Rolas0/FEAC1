@@ -10,7 +10,9 @@ interface SingleBusinessProps {
 }
 
 const SingleBusiness = ({ openSideBar }: SingleBusinessProps) => {
-    const { id } = useParams();
+    const { id } = useParams<{ id: string }>();
+
+    if (!id) return;
 
     return (
         <div className={styles.container}>

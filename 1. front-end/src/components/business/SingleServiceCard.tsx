@@ -1,15 +1,14 @@
 import styles from './SingleServiceCard.module.scss';
-import { Business } from './types';
 import { CiLocationOn } from 'react-icons/ci';
 import { MdOutlineEmail } from 'react-icons/md';
 import { BiNotepad } from 'react-icons/bi';
 import { useBusinessesById } from './hooks';
 import { LuUpload } from 'react-icons/lu';
+import { Business } from './types';
 
-interface SingleServiceProps extends Business {
+interface SingleServiceProps {
     openSideBar: () => void;
     businessId: string;
-    id: string;
 }
 
 const SingleServiceCard = ({ openSideBar, businessId }: SingleServiceProps) => {
@@ -18,7 +17,7 @@ const SingleServiceCard = ({ openSideBar, businessId }: SingleServiceProps) => {
         isLoading,
         isError,
     } = useBusinessesById(businessId);
-    const businessData = business ?? [];
+    const businessData: Business | null = business ?? null;
 
     return (
         <>
@@ -26,13 +25,13 @@ const SingleServiceCard = ({ openSideBar, businessId }: SingleServiceProps) => {
                 <div>Loading</div>
             ) : isError ? (
                 <div>Error</div>
-            ) : (
+            ) : businessData ? (
                 <>
                     <div className={styles.header}>
                         <div className={styles.avatar_div}>
                             <img
                                 className={styles.avatar}
-                                src={businessData.imageUrls}
+                                src={businessData.imageUrls[0]}
                                 alt={businessData.name}
                             />
                         </div>
@@ -74,6 +73,8 @@ const SingleServiceCard = ({ openSideBar, businessId }: SingleServiceProps) => {
                         </div>
                     </div>
                 </>
+            ) : (
+                <div>No business data found</div>
             )}
         </>
     );
