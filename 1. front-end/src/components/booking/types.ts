@@ -1,3 +1,7 @@
+import { Business } from '../business/types';
+
+export type BookingStatus = 'confirmed' | 'pending' | 'completed';
+
 export interface Booking {
     _id: string;
     businessId: string;
@@ -5,7 +9,16 @@ export interface Booking {
     time: string;
     userEmail: string;
     userName: string;
-    status: 'confirmed' | 'pending' | 'cancelled';
+    status: BookingStatus;
+}
+export interface BookingTwo {
+    _id: string;
+    businessId: Business;
+    date: Date | null;
+    time: string;
+    userEmail: string;
+    userName: string;
+    status: BookingStatus;
 }
 
 export type NewBooking = Omit<Booking, '_id'>;

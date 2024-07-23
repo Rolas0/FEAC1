@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Bookings } from '../booking/types';
+import { Booking } from '../booking/types';
 
 export interface User {
     time: ReactNode;
@@ -8,7 +8,7 @@ export interface User {
     _id: string;
     name: string;
     email: string;
-    bookings?: Bookings[];
+    bookings?: Booking[];
 }
 
 export interface LoginRequest {

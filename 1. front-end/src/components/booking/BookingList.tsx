@@ -1,20 +1,14 @@
 import BookingCard from './BookingCard';
 import styles from './Bookings.module.scss';
 import classNames from 'classnames';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { useUserBookings } from './hooks';
-import { CreateUserLoginContext } from '@/context/UserLoginContext';
+import { BookingStatus } from './types';
 
 const BookingList = () => {
-    const { user } = useContext(CreateUserLoginContext);
+    const [status, setStatus] = useState<BookingStatus>('confirmed');
 
-    const id = user!._id;
-
-    const [status, setStatus] = useState<'confirmed' | 'pending' | 'cancelled'>(
-        'confirmed'
-    );
-
-    const { data: bookings, isLoading, isError } = useUserBookings(id, status);
+    const { data: bookings, isLoading, isError } = useUserBookings(status);
     const bookingsData = bookings ?? [];
 
     return (
@@ -32,9 +26,9 @@ const BookingList = () => {
                     </button>
                     <button
                         className={classNames({
-                            [styles.active]: status === 'cancelled',
+                            [styles.active]: status === 'completed',
                         })}
-                        onClick={() => setStatus('cancelled')}
+                        onClick={() => setStatus('completed')}
                     >
                         Completed
                     </button>

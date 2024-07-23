@@ -3,10 +3,10 @@ import { GoPerson } from 'react-icons/go';
 import { CiLocationOn } from 'react-icons/ci';
 import { CiCalendar } from 'react-icons/ci';
 import { LuClock4 } from 'react-icons/lu';
-import { Bookings } from './types';
+import { BookingTwo } from './types';
 
 interface BookingCardProps {
-    bookingsData: Bookings[];
+    bookingsData: BookingTwo[];
     isLoading: boolean;
     isError: boolean;
 }

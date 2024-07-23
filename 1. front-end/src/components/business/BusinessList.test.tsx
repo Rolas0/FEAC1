@@ -1,10 +1,9 @@
 import { render, screen } from '@testing-library/react';
-// import '@testing-library/jest-dom/extend-expect';
 import BusinessList from './BusinessList';
 import { useBusinesses } from './hooks';
 import { Business } from './types';
+import { MemoryRouter } from 'react-router-dom';
 
-// Mock the useBusinesses hook
 jest.mock('./hooks');
 
 const mockBusinesses: Business[] = [
@@ -42,7 +41,11 @@ describe('BusinessList Component', () => {
             isLoading: true,
         });
 
-        render(<BusinessList search="" />);
+        render(
+            <MemoryRouter>
+                <BusinessList search="" />
+            </MemoryRouter>
+        );
 
         expect(screen.getByText('Loading...')).toBeInTheDocument();
     });
@@ -54,7 +57,11 @@ describe('BusinessList Component', () => {
             isLoading: false,
         });
 
-        render(<BusinessList search="" />);
+        render(
+            <MemoryRouter>
+                <BusinessList search="" />
+            </MemoryRouter>
+        );
 
         expect(
             screen.getByText('Error loading businesses.')
@@ -68,7 +75,11 @@ describe('BusinessList Component', () => {
             isLoading: false,
         });
 
-        render(<BusinessList search="" />);
+        render(
+            <MemoryRouter>
+                <BusinessList search="" />
+            </MemoryRouter>
+        );
 
         expect(screen.getByText('Business 1')).toBeInTheDocument();
         expect(screen.getByText('Business 2')).toBeInTheDocument();
@@ -81,7 +92,11 @@ describe('BusinessList Component', () => {
             isLoading: false,
         });
 
-        render(<BusinessList search="" category="Restaurant" />);
+        render(
+            <MemoryRouter>
+                <BusinessList search="" category="Restaurant" />
+            </MemoryRouter>
+        );
 
         expect(screen.getByText('Business 1')).toBeInTheDocument();
         expect(screen.queryByText('Business 2')).not.toBeInTheDocument();
@@ -94,7 +109,11 @@ describe('BusinessList Component', () => {
             isLoading: false,
         });
 
-        render(<BusinessList search="" category="Nonexistent Category" />);
+        render(
+            <MemoryRouter>
+                <BusinessList search="" category="Nonexistent Category" />
+            </MemoryRouter>
+        );
 
         expect(screen.getByText('No businesses found.')).toBeInTheDocument();
     });
@@ -106,7 +125,11 @@ describe('BusinessList Component', () => {
             isLoading: false,
         });
 
-        render(<BusinessList search="" />);
+        render(
+            <MemoryRouter>
+                <BusinessList search="" />
+            </MemoryRouter>
+        );
 
         expect(screen.getByText('No businesses found.')).toBeInTheDocument();
     });

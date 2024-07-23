@@ -23,7 +23,6 @@ const LoginForm = () => {
             navigate(ROUTES.HOME);
         } catch (error) {
             const errorMessage = error as ErrorResponse;
-            console.error(errorMessage);
             setError(errorMessage.response?.data.message ?? '');
         }
     };
@@ -37,6 +36,7 @@ const LoginForm = () => {
             >
                 <Form className={styles.form}>
                     <h2 className={styles.title}>Login</h2>
+                    {error && <div className={styles.error}>{error}</div>}
                     <div className={styles.field}>
                         <FormikField
                             name="email"

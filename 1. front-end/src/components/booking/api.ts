@@ -1,10 +1,10 @@
 import axiosInstance from '@/config/axios';
-import { Booking, NewBooking } from './types';
+import { Booking, BookingStatus, BookingTwo, NewBooking } from './types';
 
 export const fetchUserBookings = async (
     userId: string,
-    status: 'confirmed' | 'pending' | 'cancelled'
-): Promise<Booking[]> => {
+    status: BookingStatus
+): Promise<BookingTwo[]> => {
     const response = await axiosInstance.get(`/user/${userId}/bookings`, {
         params: { status },
     });
