@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "",
     "scripts": {
-        "start": "cd 2.back-end && yarn && yarn start",
+        "start": "cd 2.back-end && yarn && yarn build && yarn start",
         "heroku-postbuild": "cd 1.front-end && yarn && yarn build",
         "deploy": "git push heroku main"
     },
