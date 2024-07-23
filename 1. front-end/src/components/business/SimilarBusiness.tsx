@@ -1,10 +1,10 @@
 import { useBusinesses } from './hooks';
 import styles from './SimilarBusiness.module.scss';
 import { ROUTES } from '@/router/routes';
-import { generatePath, useNavigate, useParams } from 'react-router-dom';
+import { generatePath, useNavigate } from 'react-router-dom';
 
 const SimilarBusiness = () => {
-    const { data: business, isLoading, isError } = useBusinesses();
+    const { data: business, isLoading, isError } = useBusinesses('');
     const businessData = business ?? [];
 
     const navigate = useNavigate();

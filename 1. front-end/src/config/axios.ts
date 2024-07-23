@@ -3,7 +3,9 @@ import axios, { AxiosError, AxiosRequestConfig } from 'axios';
 
 export type ErrorResponse = AxiosError<{ message: string }>;
 
-const baseURL = PROD ? 'PROD_LINK_TODO' : 'http://localhost:3000/'; // patikrinama kokia aplinka
+const baseURL = PROD
+    ? 'https://booking-home-service-3d32ba817bff.herokuapp.com/'
+    : 'http://localhost:3000/'; // patikrinama kokia aplinka
 
 const config: AxiosRequestConfig = {
     baseURL,

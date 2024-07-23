@@ -2,7 +2,7 @@ import styles from './BusinessGallary.module.scss';
 import { useBusinesses } from './hooks';
 
 const BusinessGallary = () => {
-    const { data: business, isLoading, isError } = useBusinesses();
+    const { data: business, isLoading, isError } = useBusinesses('');
     const businessData = business ?? [];
 
     return (

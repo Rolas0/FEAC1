@@ -1,5 +1,4 @@
 import styles from './Hero.module.scss';
-import searchIcon from '@/assets/search-icon.png';
 import { CiSearch } from 'react-icons/ci';
 
 interface HeroProps {
